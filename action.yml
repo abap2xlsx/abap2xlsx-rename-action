@@ -5,6 +5,10 @@ inputs:
     description: 'New Prefix'
     required: true
     default: 'ZHELLO'
+  folder:
+    description: 'Folder'
+    required: true
+    default: 'src/abap2xlsx'
 runs:
   using: 'node20'
   main: 'index.js'
