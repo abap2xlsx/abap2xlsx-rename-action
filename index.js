@@ -1,18 +1,16 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
+const child_process = require('child_process');
 
 try {
   const patterns = core.getInput('patterns');
-  console.log(`Hello ${patterns}!`);
+  console.log(`Patterns: ${patterns}!`);
 
   const folder = core.getInput('folder');
-  console.log(`Hello ${folder}!`);
+  console.log(`Folder: ${folder}!`);
 
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
+  child_process.execSync(`git clone --depth 1 https://github.com/abap2xlsx/abap2xlsx`);
+  child_process.execSync(`ls`);
 
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
 } catch (error) {
   core.setFailed(error.message);
 }
