@@ -51,18 +51,17 @@ try {
   const folder = core.getInput('folder');
   console.log(`Folder: ${folder}`);
 
-  child_process.execSync(`npm install @abaplint/cli -g`);
-  child_process.execSync(`git clone --depth 1 https://github.com/abap2xlsx/abap2xlsx ` + inputFolder);
-  child_process.execSync(`mkdir ` + outputFolder);
-  fs.writeFileSync("abaplint-rename.json", JSON.stringify(config, null, 2));
-//  child_process.execSync(`abaplint --rename abaplint-rename.json`);
-  child_process.execSync(`ls`);
-
   if (fs.existsSync(folder) === false) {
-    child_process.execSync(`mkdir ` + folder);
+    core.setFailed(folder + " must exist");
   } else {
     child_process.execSync(`rm ` + folder + `/*.*`);
   }
+
+  child_process.execSync(`npm install @abaplint/cli -g`);
+  child_process.execSync(`git clone --depth 1 https://github.com/abap2xlsx/abap2xlsx ` + inputFolder);
+  fs.writeFileSync("abaplint-rename.json", JSON.stringify(config, null, 2));
+//  child_process.execSync(`abaplint --rename abaplint-rename.json`);
+  child_process.execSync(`ls`);
 
 // rm temp-abap2xlsx-input
 // rm temp-abap2xlsx-output
