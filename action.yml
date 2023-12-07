@@ -1,0 +1,10 @@
+name: 'abap2xlsx-rename'
+description: 'Mirror and rename abap2xlsx'
+inputs:
+  new-prefix:
+    description: 'New Prefix'
+    required: true
+    default: 'ZHELLO'
+runs:
+  using: 'node20'
+  main: 'index.js'
