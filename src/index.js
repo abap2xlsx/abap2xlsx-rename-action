@@ -60,6 +60,7 @@ try {
 
   child_process.execSync(`npm install @abaplint/cli -g`);
   child_process.execSync(`git clone --depth 1 https://github.com/abap2xlsx/abap2xlsx ` + inputFolder);
+  child_process.execSync(`mv ` + inputFolder + `/src/not_cloud/*.* ` + inputFolder + `/src/`);
   fs.writeFileSync("abaplint-rename.json", JSON.stringify(config, null, 2));
   child_process.execSync(`cat abaplint-rename.json`);
   child_process.execSync(`ls`);
