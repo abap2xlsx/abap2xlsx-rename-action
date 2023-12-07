@@ -47,6 +47,7 @@ const config = {
 try {
   const patterns = core.getInput('patterns');
   console.log(`Patterns: ${patterns}`);
+  config.rename.patterns = JSON.parse(patterns);
 
   const folder = core.getInput('folder');
   console.log(`Folder: ${folder}`);
@@ -60,12 +61,12 @@ try {
   child_process.execSync(`npm install @abaplint/cli -g`);
   child_process.execSync(`git clone --depth 1 https://github.com/abap2xlsx/abap2xlsx ` + inputFolder);
   fs.writeFileSync("abaplint-rename.json", JSON.stringify(config, null, 2));
-//  child_process.execSync(`abaplint --rename abaplint-rename.json`);
-  child_process.execSync(`ls`);
+  child_process.execSync(`abaplint --rename abaplint-rename.json`);
+  child_process.execSync(`cp ${outputFolder}/*.* ${folder}`);
 
-// rm temp-abap2xlsx-input
-// rm temp-abap2xlsx-output
-
+  child_process.execSync(`rm -rf temp-abap2xlsx-input`);
+  child_process.execSync(`rm -rf temp-abap2xlsx-output`);
+  child_process.execSync(`rm abaplint-rename.json`);
 } catch (error) {
   core.setFailed(error.message);
 }
