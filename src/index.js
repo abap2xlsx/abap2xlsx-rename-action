@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const child_process = require('child_process');
 const fs = require('fs');
-const rename = require('rename.js');
+const rename = require('./rename.js');
 
 try {
   const patterns = core.getInput('patterns');
