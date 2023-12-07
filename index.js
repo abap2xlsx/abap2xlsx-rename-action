@@ -2,11 +2,15 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
-  const nameToGreet = core.getInput('new-prefix');
-  console.log(`Hello ${nameToGreet}!`);
+  const patterns = core.getInput('patterns');
+  console.log(`Hello ${patterns}!`);
+
+  const folder = core.getInput('folder');
+  console.log(`Hello ${folder}!`);
+
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
+
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
 } catch (error) {

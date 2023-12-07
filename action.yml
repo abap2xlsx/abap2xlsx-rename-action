@@ -1,10 +1,10 @@
 name: 'abap2xlsx-rename'
 description: 'Mirror and rename abap2xlsx'
 inputs:
-  new-prefix:
-    description: 'New Prefix'
+  patterns:
+    description: 'Patterns'
     required: true
-    default: 'ZHELLO'
+    default: '[{"type": "CLAS|INTF", "oldName": "z(.*)_excel", "newName": "/abc/$1"},{"type": "DTEL|DOMA|TABL|TTYP", "oldName": "zexcel_", "newName": "/abc/"}]'
   folder:
     description: 'Folder'
     required: true
