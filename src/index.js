@@ -66,7 +66,7 @@ try {
   child_process.execSync(`ls`);
   child_process.execSync(`ls ` + inputFolder);
   child_process.execSync(`abaplint --rename abaplint-rename.json`, {stdio: 'inherit'});
-  child_process.execSync(`cp ${outputFolder}/*.* ${folder}`);
+  child_process.execSync(`cp ${outputFolder}/${inputFolder}/src/*.* ${folder}`);
 
   child_process.execSync(`rm -rf temp-abap2xlsx-input`);
   child_process.execSync(`rm -rf temp-abap2xlsx-output`);

@@ -4,7 +4,7 @@ inputs:
   patterns:
     description: 'Patterns'
     required: true
-    default: '[{"type": "CLAS|INTF", "oldName": "z(.*)_excel", "newName": "/abc/$1"},{"type": "DTEL|DOMA|TABL|TTYP", "oldName": "zexcel_", "newName": "/abc/"}]'
+    default: '[{"type": "CLAS|INTF", "oldName": "z(.*)_excel", "newName": "y$1_ecb"},{"type": "DTEL|DOMA|TABL|TTYP", "oldName": "zexcel_", "newName": "yecb_"}]'
   folder:
     description: 'Folder'
     required: true
