@@ -61,7 +61,10 @@ try {
   child_process.execSync(`npm install @abaplint/cli -g`);
   child_process.execSync(`git clone --depth 1 https://github.com/abap2xlsx/abap2xlsx ` + inputFolder);
   fs.writeFileSync("abaplint-rename.json", JSON.stringify(config, null, 2));
-  child_process.execSync(`abaplint --rename abaplint-rename.json`);
+  child_process.execSync(`cat abaplint-rename.json`);
+  child_process.execSync(`ls`);
+  child_process.execSync(`ls ` + inputFolder);
+  child_process.execSync(`abaplint --rename abaplint-rename.json`, {stdio: 'inherit'});
   child_process.execSync(`cp ${outputFolder}/*.* ${folder}`);
 
   child_process.execSync(`rm -rf temp-abap2xlsx-input`);
